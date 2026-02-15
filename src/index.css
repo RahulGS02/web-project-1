@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-50;
+    @apply font-sans antialiased;
+    @apply overflow-x-hidden;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Ensure no horizontal scroll */
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold;
+  }
+
+  /* Responsive typography */
+  h1 {
+    @apply text-responsive-5xl;
+  }
+
+  h2 {
+    @apply text-responsive-4xl;
+  }
+
+  h3 {
+    @apply text-responsive-3xl;
+  }
+
+  h4 {
+    @apply text-responsive-2xl;
+  }
+
+  p {
+    @apply text-responsive-base;
+  }
+
+  /* Ensure minimum font size for readability */
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-custom {
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Touch-friendly buttons */
+  .btn {
+    @apply min-h-touch px-6 py-3 rounded-lg font-medium transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+    @apply focus:ring-primary;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-neutral-900 hover:bg-accent-dark;
+    @apply focus:ring-accent;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+    @apply focus:ring-primary;
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-white/80 dark:bg-neutral-800/80 backdrop-blur-lg;
+    @apply border border-white/20 dark:border-neutral-700/20;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-neutral-800 rounded-xl shadow-lg;
+    @apply transition-all duration-300 hover:shadow-2xl;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Responsive image container */
+  .img-responsive {
+    @apply w-full h-auto object-cover;
+  }
+
+  /* Aspect ratio utilities */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Custom animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  background-size: 1000px 100%;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply animate-pulse bg-neutral-200 dark:bg-neutral-700 rounded;
+}
+
+/* Smooth transitions for theme toggle */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
