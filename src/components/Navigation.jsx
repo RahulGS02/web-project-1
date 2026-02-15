@@ -36,7 +36,9 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass shadow-lg py-3' : 'bg-transparent py-4'
+        isScrolled
+          ? 'glass shadow-lg py-3'
+          : 'bg-neutral-900/80 backdrop-blur-md border-b border-white/10 py-4'
       }`}
     >
       <div className="container-custom">
@@ -51,10 +53,18 @@ const Navigation = () => {
               <span className="text-white font-display font-bold text-lg sm:text-xl">S</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-lg sm:text-xl text-neutral-900 dark:text-white">
+              <span className={`font-display font-bold text-lg sm:text-xl transition-colors ${
+                isScrolled
+                  ? 'text-neutral-900 dark:text-white'
+                  : 'text-white'
+              }`}>
                 Sararah
               </span>
-              <span className="text-xs text-neutral-600 dark:text-neutral-400 -mt-1">
+              <span className={`text-xs -mt-1 transition-colors ${
+                isScrolled
+                  ? 'text-neutral-600 dark:text-neutral-400'
+                  : 'text-neutral-300'
+              }`}>
                 Architects
               </span>
             </div>
@@ -69,7 +79,11 @@ const Navigation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => scrollToSection(link.href)}
-                className="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light transition-colors font-medium"
+                className={`transition-colors font-medium ${
+                  isScrolled
+                    ? 'text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light'
+                    : 'text-white hover:text-accent'
+                }`}
               >
                 {link.name}
               </motion.button>
@@ -81,13 +95,17 @@ const Navigation = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              className={`p-2 rounded-lg transition-colors ${
+                isScrolled
+                  ? 'hover:bg-neutral-200 dark:hover:bg-neutral-700'
+                  : 'hover:bg-white/10'
+              }`}
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
-                <Moon className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
+                <Moon className={`w-5 h-5 ${isScrolled ? 'text-neutral-700 dark:text-neutral-300' : 'text-white'}`} />
               ) : (
-                <Sun className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
+                <Sun className={`w-5 h-5 ${isScrolled ? 'text-neutral-700 dark:text-neutral-300' : 'text-white'}`} />
               )}
             </button>
 
@@ -103,13 +121,17 @@ const Navigation = () => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              className={`lg:hidden p-2 rounded-lg transition-colors ${
+                isScrolled
+                  ? 'hover:bg-neutral-200 dark:hover:bg-neutral-700'
+                  : 'hover:bg-white/10'
+              }`}
               aria-label="Toggle menu"
             >
               {isOpen ? (
-                <X className="w-6 h-6 text-neutral-700 dark:text-neutral-300" />
+                <X className={`w-6 h-6 ${isScrolled ? 'text-neutral-700 dark:text-neutral-300' : 'text-white'}`} />
               ) : (
-                <Menu className="w-6 h-6 text-neutral-700 dark:text-neutral-300" />
+                <Menu className={`w-6 h-6 ${isScrolled ? 'text-neutral-700 dark:text-neutral-300' : 'text-white'}`} />
               )}
             </button>
           </div>
